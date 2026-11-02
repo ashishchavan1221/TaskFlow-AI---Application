@@ -41,6 +41,11 @@
 		AA10003F2C00000100000001 /* MainDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000402C00000100000001 /* MainDashboardView.swift */; };
 		AA1000412C00000100000001 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA1000422C00000100000001 /* GoogleService-Info.plist */; };
 		AA1000432C00000100000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1000442C00000100000001 /* Assets.xcassets */; };
+		AA1000662C00000100000001 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA1000612C00000100000001 /* FirebaseAuth */; };
+		AA1000672C00000100000001 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AA1000622C00000100000001 /* FirebaseFirestore */; };
+		AA1000682C00000100000001 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = AA1000632C00000100000001 /* FirebaseFunctions */; };
+		AA1000692C00000100000001 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AA1000642C00000100000001 /* FirebaseStorage */; };
+		AA10006A2C00000100000001 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = AA1000652C00000100000001 /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +92,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1000662C00000100000001 /* FirebaseAuth in Frameworks */,
+				AA1000672C00000100000001 /* FirebaseFirestore in Frameworks */,
+				AA1000682C00000100000001 /* FirebaseFunctions in Frameworks */,
+				AA1000692C00000100000001 /* FirebaseStorage in Frameworks */,
+				AA10006A2C00000100000001 /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +233,13 @@
 			dependencies = (
 			);
 			name = TaskFlowAI;
+			packageProductDependencies = (
+				AA1000612C00000100000001 /* FirebaseAuth */,
+				AA1000622C00000100000001 /* FirebaseFirestore */,
+				AA1000632C00000100000001 /* FirebaseFunctions */,
+				AA1000642C00000100000001 /* FirebaseStorage */,
+				AA1000652C00000100000001 /* FirebaseMessaging */,
+			);
 			productName = TaskFlowAI;
 			productReference = AA1000002C00000100000001 /* TaskFlowAI.app */;
 			productType = "com.apple.product-type.application";
@@ -251,6 +268,9 @@
 				Base,
 			);
 			mainGroup = AA1000482C00000100000001;
+			packageReferences = (
+				AA1000602C00000100000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = AA10004A2C00000100000001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,6 +333,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA1000602C00000100000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA1000612C00000100000001 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1000602C00000100000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AA1000622C00000100000001 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1000602C00000100000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		AA1000632C00000100000001 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1000602C00000100000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		AA1000642C00000100000001 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1000602C00000100000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		AA1000652C00000100000001 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA1000602C00000100000001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AA1000582C00000100000001 /* Debug */ = {

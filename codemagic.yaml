@@ -21,6 +21,11 @@ workflows:
           ./gradlew assembleDebug
       - name: Build Android Release APK & Play Store Bundle (AAB)
         script: |
+          if [ -n "$CM_KEYSTORE_PATH" ]; then
+            export KEYSTORE_PATH="$CM_KEYSTORE_PATH"
+            export STORE_PASSWORD="$CM_KEYSTORE_PASSWORD"
+            export KEY_PASSWORD="$CM_KEY_PASSWORD"
+          fi
           ./gradlew assembleRelease
           ./gradlew bundleRelease
     artifacts:
@@ -42,6 +47,9 @@ workflows:
         XCODE_SCHEME: "TaskFlowAI"
       xcode: latest
     scripts:
+      - name: Set up code signing profiles
+        script: |
+          xcode-project use-profiles --project ios/TaskFlowAI.xcodeproj || true
       - name: Resolve Swift Package Dependencies
         script: |
           cd ios
@@ -59,10 +67,11 @@ workflows:
       - name: Package and Export Signed IPA
         script: |
           cd ios
+          EXPORT_PLIST="${CM_EXPORT_OPTIONS_PLIST:-TaskFlowAI/Resources/ExportOptions.plist}"
           xcodebuild -exportArchive \
             -archivePath "$CM_BUILD_DIR/build/ios/TaskFlowAI.xcarchive" \
             -exportPath "$CM_BUILD_DIR/build/ios/ipa" \
-            -exportOptionsPlist TaskFlowAI/Resources/ExportOptions.plist
+            -exportOptionsPlist "$EXPORT_PLIST"
     artifacts:
       - build/ios/ipa/*.ipa
       - build/ios/TaskFlowAI.xcarchive
