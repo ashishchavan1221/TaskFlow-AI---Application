@@ -1,0 +1,11 @@
+node_modules/
+build/
+.gradle/
+.kotlin/
+local.properties
+keystore.properties
+*.jks
+*.keystore
+*service-account*.json
+functions/.env.*
+.env

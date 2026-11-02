@@ -1,0 +1,6 @@
+{
+  "name": "TaskFlow AI",
+  "description": "Enterprise B2B Task Management & Team Orchestration Platform",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

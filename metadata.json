@@ -1,0 +1,6 @@
+{
+  "name": "TaskFlow AI",
+  "description": "Enterprise multi-role task management app featuring AI Assist, real-time analytics dashboards, and specialized portals for Owner, Manager, and Staff.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TaskFlow AI - Enterprise Mobile Workspace</title>
+  <meta name="description" content="Enterprise B2B Task Management & Team Orchestration Platform with AI Insights and Role-based Workflows">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Desktop Simulator Stage -->
+  <div class="simulator-stage">
+    <!-- Top Studio Bar -->
+    <header class="studio-header">
+      <div class="studio-brand">
+        <div class="brand-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1>TaskFlow AI <span class="version-tag">Mobile Live</span></h1>
+          <p class="studio-sub">Google AI Studio &bull; Enterprise B2B Orchestration</p>
+        </div>
+      </div>
+
+      <div class="studio-controls">
+        <!-- Quick Role Switcher -->
+        <div class="role-selector-pill" title="Switch active user role">
+          <span class="role-label">Active Role:</span>
+          <button class="role-btn active" data-role="admin" id="roleBtnAdmin">👑 Admin (CEO)</button>
+          <button class="role-btn" data-role="manager" id="roleBtnManager">💼 Manager (Ops)</button>
+          <button class="role-btn" data-role="staff" id="roleBtnStaff">💻 Staff (Dev)</button>
+        </div>
+
+        <!-- Frame and theme toggles -->
+        <div class="toolbar-actions">
+          <button id="toggleFrameBtn" class="tool-btn" title="Toggle Phone Frame">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+            <span class="btn-text">Frame</span>
+          </button>
+          <button id="lockDeviceBtn" class="tool-btn" title="Simulate Lock Screen (4-Digit PIN)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span class="btn-text">Lock</span>
+          </button>
+          <button id="themeToggleBtn" class="tool-btn" title="Toggle Light/Dark Theme">
+            <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button id="androidInfoBtn" class="tool-btn highlight" title="Android Native Studio Guide">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 17l6-6-6-6"></path>
+              <path d="M12 19h8"></path>
+            </svg>
+            <span class="btn-text">Android Code</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Mobile Canvas Container -->
+    <main class="device-viewport-wrapper">
+      <!-- Smartphone Mockup Bezel -->
+      <div class="phone-frame iphone-16-pro" id="phoneDevice">
+        <!-- Physical Buttons Simulation -->
+        <div class="device-btn volume-up"></div>
+        <div class="device-btn volume-down"></div>
+        <div class="device-btn action-key"></div>
+        <div class="device-btn power-key"></div>
+
+        <!-- Phone Display Screen -->
+        <div class="phone-screen" id="appRoot">
+          <!-- Dynamic Island / Sensor Notch -->
+          <div class="dynamic-island-container">
+            <div class="dynamic-island" id="dynamicIsland">
+              <div class="island-camera"></div>
+              <div class="island-indicator" id="islandContent">
+                <span class="island-dot"></span>
+                <span class="island-text">TaskFlow AI Active</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status Bar -->
+          <div class="phone-status-bar">
+            <div class="status-left">
+              <span id="liveClock" class="clock-display">09:41</span>
+            </div>
+            <div class="status-right">
+              <span class="network-badge">5G</span>
+              <svg class="status-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+              </svg>
+              <svg class="status-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+              </svg>
+              <div class="battery-capsule">
+                <div class="battery-level" style="width: 88%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- In-App Top Navigation Bar -->
+          <header class="app-topbar">
+            <div class="app-topbar-left">
+              <button class="icon-btn" id="drawerToggleBtn" aria-label="Open Navigation Drawer">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+              </button>
+              <div class="app-title-group">
+                <div class="brand-row">
+                  <h2 class="app-title">TaskFlow</h2>
+                  <span class="ai-pill">AI</span>
+                </div>
+                <span class="org-subtext" id="topbarOrgName">Nexus Enterprise Ltd</span>
+              </div>
+            </div>
+
+            <div class="app-topbar-right">
+              <!-- Active Role Badge -->
+              <div class="header-role-chip" id="headerRoleChip" title="Click to cycle role">
+                <span class="role-chip-indicator"></span>
+                <span id="headerRoleText">ADMIN</span>
+              </div>
+              <!-- Notification Bell with Unread Badge -->
+              <button class="icon-btn notification-bell" id="bellBtn" aria-label="Notifications">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notification-badge" id="notifBadge">2</span>
+              </button>
+            </div>
+          </header>
+
+          <!-- App Scrollable Screen Content -->
+          <div class="app-content-viewport" id="scrollContainer">
+            <!-- TAB 0: HOME / DASHBOARD (Role Driven) -->
+            <section class="screen-tab active" id="tabHome">
+              <!-- Dynamic Role Dashboard Rendered Here via JS -->
+              <div id="roleDashboardContainer"></div>
+            </section>
+
+            <!-- TAB 1: ALL TASKS WORKSPACE -->
+            <section class="screen-tab" id="tabTasks">
+              <div class="tasks-screen-header">
+                <div class="screen-heading-row">
+                  <div>
+                    <h2 class="screen-title">Task Pipeline</h2>
+                    <p class="screen-subtitle">Delegated work &amp; department deliverables</p>
+                  </div>
+                  <div class="view-mode-toggle">
+                    <button class="view-toggle-btn active" id="viewListBtn" title="List View">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                      </svg>
+                    </button>
+                    <button class="view-toggle-btn" id="viewKanbanBtn" title="Kanban Board View">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="18" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="18" rx="1"></rect>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Search & Filters -->
+                <div class="search-bar-wrap">
+                  <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  <input type="text" id="taskSearchInput" placeholder="Search tasks, departments, assignees..." />
+                </div>
+
+                <!-- Status Filter Pills -->
+                <div class="filter-pills-row">
+                  <button class="filter-pill active" data-status="all">All (<span id="countAll">0</span>)</button>
+                  <button class="filter-pill" data-status="todo">To Do (<span id="countTodo">0</span>)</button>
+                  <button class="filter-pill" data-status="in_progress">In Progress (<span id="countInProgress">0</span>)</button>
+                  <button class="filter-pill" data-status="done">Completed (<span id="countDone">0</span>)</button>
+                  <button class="filter-pill" data-status="blocked">Blocked (<span id="countBlocked">0</span>)</button>
+                </div>
+              </div>
+
+              <!-- Task List View Container -->
+              <div class="tasks-list-container" id="taskListContainer"></div>
+
+              <!-- Kanban Board Container (Hidden by default) -->
+              <div class="kanban-container hidden" id="kanbanContainer">
+                <div class="kanban-col" data-col="todo">
+                  <div class="kanban-col-header">
+                    <span class="col-dot todo"></span>
+                    <h4>To Do</h4>
+                    <span class="col-count" id="kanbanCountTodo">0</span>
+                  </div>
+                  <div class="kanban-cards" id="kanbanCardsTodo"></div>
+                </div>
+                <div class="kanban-col" data-col="in_progress">
+                  <div class="kanban-col-header">
+                    <span class="col-dot in_progress"></span>
+                    <h4>In Progress</h4>
+                    <span class="col-count" id="kanbanCountInProgress">0</span>
+                  </div>
+                  <div class="kanban-cards" id="kanbanCardsInProgress"></div>
+                </div>
+                <div class="kanban-col" data-col="done">
+                  <div class="kanban-col-header">
+                    <span class="col-dot done"></span>
+                    <h4>Completed</h4>
+                    <span class="col-count" id="kanbanCountDone">0</span>
+                  </div>
+                  <div class="kanban-cards" id="kanbanCardsDone"></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- TAB 2: TEAM & WORKFORCE DIRECTORY -->
+            <section class="screen-tab" id="tabTeam">
+              <div class="team-screen-header">
+                <div class="screen-heading-row">
+                  <div>
+                    <h2 class="screen-title">Team Directory</h2>
+                    <p class="screen-subtitle">Department hierarchy &amp; staff credential status</p>
+                  </div>
+                  <button class="action-btn-small" id="openAddMemberBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Add Member</span>
+                  </button>
+                </div>
+
+                <!-- Department summary metrics -->
+                <div class="dept-summary-cards" id="deptSummaryContainer"></div>
+              </div>
+
+              <!-- Team Members List -->
+              <div class="members-list" id="membersListContainer"></div>
+            </section>
+
+            <!-- TAB 3: GEMINI AI STUDIO HUB -->
+            <section class="screen-tab" id="tabAi">
+              <div class="ai-screen-header">
+                <div class="ai-hero-card">
+                  <div class="ai-hero-sparkle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                    </svg>
+                  </div>
+                  <div class="ai-hero-info">
+                    <span class="ai-badge">Google AI Studio Engine</span>
+                    <h3>Gemini Enterprise Copilot</h3>
+                    <p>Real-time task delegation intelligence, workload anomaly detection, and operational optimizations.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Dynamic Insights List -->
+              <div class="section-title-row">
+                <h4>Predictive Operational Insights</h4>
+                <button class="refresh-ai-btn" id="refreshAiBtn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                  </svg>
+                  <span>Re-analyze</span>
+                </button>
+              </div>
+              <div class="ai-insights-list" id="aiInsightsContainer"></div>
+
+              <!-- Interactive Gemini Prompt Box -->
+              <div class="ai-chat-card">
+                <div class="ai-chat-header">
+                  <div class="gemini-avatar">✦</div>
+                  <div>
+                    <h5>Ask TaskFlow AI</h5>
+                    <p>Instant delegation advice, draft deliverables, or workload rebalancing</p>
+                  </div>
+                </div>
+                <div class="ai-chat-stream" id="aiChatStream">
+                  <div class="ai-bubble ai">
+                    Hello! I'm your TaskFlow AI assistant. I've audited 3 active department tasks. I can help draft delegation plans, balance team hours, or create compliance checklists. Try asking below!
+                  </div>
+                </div>
+                <div class="ai-chat-input-bar">
+                  <input type="text" id="aiPromptInput" placeholder="e.g. Plan delegation for engineering task..." />
+                  <button id="sendAiPromptBtn" class="ai-send-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- TAB 4: SETTINGS & GOVERNANCE -->
+            <section class="screen-tab" id="tabSettings">
+              <div class="settings-screen-container">
+                <div class="settings-profile-card">
+                  <div class="profile-avatar" id="settingsProfileAvatar">VS</div>
+                  <div class="profile-meta">
+                    <h3 id="settingsProfileName">Vikram Sharma</h3>
+                    <p id="settingsProfileEmail">admin@nexusenterprise.com</p>
+                    <div class="profile-tags">
+                      <span class="role-badge" id="settingsProfileRole">CEO &bull; ADMIN</span>
+                      <span class="dept-badge" id="settingsProfileDept">Executive &bull; EXEC</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Organization Profile Details -->
+                <div class="settings-card">
+                  <div class="settings-card-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <h4>Organization Metadata</h4>
+                  </div>
+                  <div class="org-meta-grid">
+                    <div class="meta-item">
+                      <span class="meta-label">Company Name</span>
+                      <span class="meta-val" id="orgNameVal">Nexus Enterprise Ltd</span>
+                    </div>
+                    <div class="meta-item">
+                      <span class="meta-label">GSTIN ID</span>
+                      <span class="meta-val font-mono" id="orgGstinVal">27AAPCA1234F1Z5</span>
+                    </div>
+                    <div class="meta-item">
+                      <span class="meta-label">Industry</span>
+                      <span class="meta-val" id="orgIndustryVal">Enterprise Solutions</span>
+                    </div>
+                    <div class="meta-item">
+                      <span class="meta-label">Timezone</span>
+                      <span class="meta-val" id="orgTimezoneVal">Asia/Kolkata (IST)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Security & PIN Lock Settings -->
+                <div class="settings-card">
+                  <div class="settings-card-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <h4>Biometrics &amp; App Security</h4>
+                  </div>
+                  <div class="settings-row">
+                    <div>
+                      <span class="row-title">Biometric Authentication</span>
+                      <p class="row-desc">Unlock via Face ID or Fingerprint scanner</p>
+                    </div>
+                    <label class="switch">
+                      <input type="checkbox" id="biometricToggle" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div class="settings-row">
+                    <div>
+                      <span class="row-title">4-Digit Security PIN</span>
+                      <p class="row-desc">Current PIN: <span class="font-mono" id="currentPinDisplay">1234</span></p>
+                    </div>
+                    <button class="btn-text-action" id="changePinBtn">Change PIN</button>
+                  </div>
+                  <div class="settings-row">
+                    <div>
+                      <span class="row-title">Lock App Now</span>
+                      <p class="row-desc">Test the security lock screen</p>
+                    </div>
+                    <button class="action-btn-small" id="triggerLockNowBtn">Lock Session</button>
+                  </div>
+                </div>
+
+                <!-- Role Testing Sandbox -->
+                <div class="settings-card highlight-card">
+                  <div class="settings-card-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                    </svg>
+                    <h4>Role Simulation Sandbox</h4>
+                  </div>
+                  <p class="card-desc">Switch personas to experience how TaskFlow AI tailors functionality to Owners, Managers, and Staff:</p>
+                  <div class="role-grid">
+                    <div class="role-card" data-role="admin">
+                      <div class="role-card-top">
+                        <span class="role-badge admin">👑 Admin</span>
+                        <span class="active-badge" id="adminActiveBadge">ACTIVE</span>
+                      </div>
+                      <h5>Vikram Sharma (CEO)</h5>
+                      <p>Full executive control, task approvals, team hierarchy, GSTIN governance.</p>
+                      <button class="role-select-btn" data-role="admin">Select Admin</button>
+                    </div>
+
+                    <div class="role-card" data-role="manager">
+                      <div class="role-card-top">
+                        <span class="role-badge manager">💼 Manager</span>
+                        <span class="active-badge hidden" id="managerActiveBadge">ACTIVE</span>
+                      </div>
+                      <h5>Ananya Desai (Operations)</h5>
+                      <p>Department task allocation, request staff quota from Admin, progress audit.</p>
+                      <button class="role-select-btn" data-role="manager">Select Manager</button>
+                    </div>
+
+                    <div class="role-card" data-role="staff">
+                      <div class="role-card-top">
+                        <span class="role-badge staff">💻 Staff</span>
+                        <span class="active-badge hidden" id="staffActiveBadge">ACTIVE</span>
+                      </div>
+                      <h5>Pooja Patel (Sr. Dev)</h5>
+                      <p>My assigned deliverables, interactive progress slider, blocker alerts.</p>
+                      <button class="role-select-btn" data-role="staff">Select Staff</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live Audit Trail Stream -->
+                <div class="settings-card">
+                  <div class="settings-card-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <h4>Enterprise Audit Trail</h4>
+                  </div>
+                  <div class="audit-stream" id="auditStreamContainer"></div>
+                </div>
+
+                <!-- Reset Data -->
+                <div class="settings-footer">
+                  <button class="danger-outline-btn" id="resetDemoDataBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="1 4 1 10 7 10"></polyline>
+                      <polyline points="23 20 23 14 17 14"></polyline>
+                      <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                    </svg>
+                    <span>Reset to Initial Demo State</span>
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Floating Action Button for Quick Task Creation -->
+          <button class="app-fab" id="fabCreateTask" title="Create New Task">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+
+          <!-- In-App Bottom Navigation Bar -->
+          <nav class="app-bottom-nav">
+            <button class="nav-tab active" data-tab="0" id="tabNavHome">
+              <div class="tab-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <span class="tab-label">Home</span>
+            </button>
+
+            <button class="nav-tab" data-tab="1" id="tabNavTasks">
+              <div class="tab-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11l3 3L22 4"></path>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+              </div>
+              <span class="tab-label">Tasks</span>
+            </button>
+
+            <button class="nav-tab" data-tab="2" id="tabNavTeam">
+              <div class="tab-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <span class="tab-label">Team</span>
+            </button>
+
+            <button class="nav-tab" data-tab="3" id="tabNavAi">
+              <div class="tab-icon-wrap ai-sparkle-tab">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L14.39 7.61L20 10L14.39 12.39L12 18L9.61 12.39L4 10L9.61 7.61L12 2Z" />
+                </svg>
+              </div>
+              <span class="tab-label">AI Studio</span>
+            </button>
+
+            <button class="nav-tab" data-tab="4" id="tabNavSettings">
+              <div class="tab-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+              </div>
+              <span class="tab-label">Settings</span>
+            </button>
+          </nav>
+
+          <!-- Home Indicator Bar -->
+          <div class="home-indicator-bar">
+            <div class="home-indicator"></div>
+          </div>
+
+          <!-- ================= OVERLAYS & MODALS ================= -->
+
+          <!-- 1. FULLSCREEN PIN & BIOMETRIC LOCK SCREEN -->
+          <div class="lockscreen-overlay hidden" id="lockscreenOverlay">
+            <div class="lockscreen-content">
+              <div class="lock-shield-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <h3>TaskFlow Security</h3>
+              <p class="lock-subtitle">Enter your 4-digit PIN or verify Biometrics</p>
+
+              <!-- PIN Dots -->
+              <div class="pin-dots-row" id="pinDotsRow">
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+              </div>
+
+              <!-- Biometric Prompt Trigger -->
+              <div class="biometric-trigger" id="biometricBtn" title="Click for Face ID / Fingerprint">
+                <div class="face-id-graphic">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M7 3H5a2 2 0 0 0-2 2v2"></path>
+                    <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                    <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                    <path d="M3 17v2a2 2 0 0 0 2 2h2"></path>
+                    <circle cx="9" cy="9" r="1"></circle>
+                    <circle cx="15" cy="9" r="1"></circle>
+                    <path d="M10 14h4"></path>
+                  </svg>
+                </div>
+                <span>Verify Face ID / Fingerprint</span>
+              </div>
+
+              <!-- Numeric Keypad -->
+              <div class="pin-keypad">
+                <button class="num-key" data-key="1">1</button>
+                <button class="num-key" data-key="2">2</button>
+                <button class="num-key" data-key="3">3</button>
+                <button class="num-key" data-key="4">4</button>
+                <button class="num-key" data-key="5">5</button>
+                <button class="num-key" data-key="6">6</button>
+                <button class="num-key" data-key="7">7</button>
+                <button class="num-key" data-key="8">8</button>
+                <button class="num-key" data-key="9">9</button>
+                <button class="num-key fn" data-key="clear">C</button>
+                <button class="num-key" data-key="0">0</button>
+                <button class="num-key fn" data-key="back">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="pin-hint">Default Sandbox PIN: <strong class="font-mono">1234</strong></div>
+            </div>
+          </div>
+
+          <!-- 2. NAVIGATION DRAWER -->
+          <div class="drawer-backdrop hidden" id="drawerBackdrop">
+            <div class="drawer-pane" id="drawerPane">
+              <div class="drawer-header">
+                <div class="drawer-avatar" id="drawerAvatar">VS</div>
+                <div class="drawer-user-info">
+                  <h4 id="drawerUserName">Vikram Sharma</h4>
+                  <span class="drawer-role-badge" id="drawerUserRole">👑 CEO / Admin</span>
+                  <p class="drawer-email" id="drawerUserEmail">admin@nexusenterprise.com</p>
+                </div>
+              </div>
+
+              <div class="drawer-org-box">
+                <span class="label">Organization</span>
+                <h5>Nexus Enterprise Ltd</h5>
+                <p class="gstin">GSTIN: 27AAPCA1234F1Z5</p>
+              </div>
+
+              <div class="drawer-menu">
+                <button class="drawer-item" data-action="home">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                  <span>Dashboard</span>
+                </button>
+                <button class="drawer-item" data-action="tasks">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path></svg>
+                  <span>All Tasks Pipeline</span>
+                </button>
+                <button class="drawer-item" data-action="team">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path></svg>
+                  <span>Team Directory</span>
+                </button>
+                <button class="drawer-item" data-action="ai">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.39 7.61L20 10L14.39 12.39L12 18L9.61 12.39L4 10L9.61 7.61L12 2Z"/></svg>
+                  <span>Gemini Intelligence Hub</span>
+                </button>
+                <button class="drawer-item" data-action="settings">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle></svg>
+                  <span>Governance &amp; Settings</span>
+                </button>
+              </div>
+
+              <div class="drawer-footer">
+                <button class="drawer-lock-btn" id="drawerLockBtn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>Lock App Screen</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. MODAL: CREATE TASK -->
+          <div class="modal-backdrop hidden" id="createTaskModal">
+            <div class="modal-sheet">
+              <div class="modal-header">
+                <div>
+                  <h3 class="modal-title">Create &amp; Delegate Task</h3>
+                  <p class="modal-subtitle">Assign deliverables with AI assistance</p>
+                </div>
+                <button class="close-modal-btn" data-close="createTaskModal">&times;</button>
+              </div>
+              <form id="createTaskForm">
+                <div class="form-group">
+                  <div class="input-label-row">
+                    <label for="taskTitleInput">Task Title *</label>
+                    <button type="button" class="ai-inline-btn" id="aiSuggestTitleBtn">
+                      <span>✨ AI Suggest</span>
+                    </button>
+                  </div>
+                  <input type="text" id="taskTitleInput" placeholder="e.g. Migrate AWS Lambda to Cloud Run" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="taskDescInput">Operational Specifications</label>
+                  <textarea id="taskDescInput" rows="3" placeholder="Provide requirements, compliance steps, or test instructions..."></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label for="taskDeptSelect">Department</label>
+                    <select id="taskDeptSelect">
+                      <option value="exec">Executive Leadership (EXEC)</option>
+                      <option value="ops" selected>Operations &amp; Management (OPS)</option>
+                      <option value="eng">Engineering &amp; Cloud (ENG)</option>
+                    </select>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label for="taskAssigneeSelect">Delegate To</label>
+                    <select id="taskAssigneeSelect"></select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Priority Level</label>
+                  <div class="priority-chips-selector" id="createPriorityChips">
+                    <button type="button" class="prio-chip" data-prio="low">Low</button>
+                    <button type="button" class="prio-chip active" data-prio="medium">Medium</button>
+                    <button type="button" class="prio-chip" data-prio="high">High</button>
+                    <button type="button" class="prio-chip" data-prio="urgent">Urgent</button>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label for="taskDueDate">Target Due Date</label>
+                    <input type="text" id="taskDueDate" value="In 3 Days" />
+                  </div>
+                  <div class="form-group flex-1">
+                    <label for="taskEstHours">Estimated Hours</label>
+                    <input type="number" id="taskEstHours" value="4.0" step="0.5" />
+                  </div>
+                </div>
+
+                <div class="modal-actions">
+                  <button type="button" class="secondary-btn" data-close="createTaskModal">Cancel</button>
+                  <button type="submit" class="primary-btn">
+                    <span>Create &amp; Delegate</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- 4. MODAL: TASK DETAIL & STATUS UPDATE -->
+          <div class="modal-backdrop hidden" id="taskDetailModal">
+            <div class="modal-sheet">
+              <div class="modal-header">
+                <div class="modal-title-wrap">
+                  <span class="prio-badge" id="modalDetailPrio">URGENT</span>
+                  <h3 class="modal-title" id="modalDetailTitle">Task Title</h3>
+                </div>
+                <button class="close-modal-btn" data-close="taskDetailModal">&times;</button>
+              </div>
+
+              <div class="modal-body-scroll">
+                <p class="modal-desc-text" id="modalDetailDesc">Task description details...</p>
+
+                <!-- Status selector -->
+                <div class="form-group">
+                  <label>Status</label>
+                  <div class="status-selector-row" id="detailStatusButtons">
+                    <button class="status-btn" data-status="todo">To Do</button>
+                    <button class="status-btn" data-status="in_progress">In Progress</button>
+                    <button class="status-btn" data-status="done">Completed</button>
+                    <button class="status-btn" data-status="blocked">Blocked</button>
+                  </div>
+                </div>
+
+                <!-- Progress Slider -->
+                <div class="form-group">
+                  <div class="slider-label-row">
+                    <label>Completion Progress</label>
+                    <span class="slider-val" id="detailProgressVal">65%</span>
+                  </div>
+                  <input type="range" min="0" max="100" value="65" class="progress-slider" id="detailProgressSlider" />
+                </div>
+
+                <!-- Meta grid -->
+                <div class="task-detail-meta-grid">
+                  <div class="meta-box">
+                    <span class="m-label">Assigned To</span>
+                    <span class="m-val" id="modalDetailAssignee">Ananya Desai</span>
+                  </div>
+                  <div class="meta-box">
+                    <span class="m-label">Department</span>
+                    <span class="m-val" id="modalDetailDept">Operations (OPS)</span>
+                  </div>
+                  <div class="meta-box">
+                    <span class="m-label">Due Date</span>
+                    <span class="m-val" id="modalDetailDue">Tomorrow</span>
+                  </div>
+                  <div class="meta-box">
+                    <span class="m-label">Hours (Spent / Est)</span>
+                    <span class="m-val" id="modalDetailHours">4.0h / 6.0h</span>
+                  </div>
+                </div>
+
+                <!-- Blocker note if blocked -->
+                <div class="blocker-alert-box hidden" id="modalDetailBlockerBox">
+                  <strong>⚠️ Blocker Reported:</strong>
+                  <p id="modalDetailBlockerReason">Awaiting client API credentials.</p>
+                </div>
+              </div>
+
+              <div class="modal-actions">
+                <button type="button" class="danger-btn-small" id="deleteTaskBtn">Delete Task</button>
+                <button type="button" class="primary-btn" id="saveTaskDetailBtn">Save Changes</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. MODAL: ADD TEAM MEMBER -->
+          <div class="modal-backdrop hidden" id="addMemberModal">
+            <div class="modal-sheet">
+              <div class="modal-header">
+                <div>
+                  <h3 class="modal-title">Add Team Member</h3>
+                  <p class="modal-subtitle">Provision employee credentials &amp; department binding</p>
+                </div>
+                <button class="close-modal-btn" data-close="addMemberModal">&times;</button>
+              </div>
+              <form id="addMemberForm">
+                <div class="form-group">
+                  <label for="memberNameInput">Full Name *</label>
+                  <input type="text" id="memberNameInput" placeholder="e.g. Rohan Mehta" required />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label for="memberEmpIdInput">Employee ID *</label>
+                    <input type="text" id="memberEmpIdInput" placeholder="STF-205" required />
+                  </div>
+                  <div class="form-group flex-1">
+                    <label for="memberRoleSelect">Role *</label>
+                    <select id="memberRoleSelect">
+                      <option value="staff" selected>Staff Associate</option>
+                      <option value="manager">Department Manager</option>
+                      <option value="admin">Administrator</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="memberEmailInput">Corporate Email *</label>
+                  <input type="email" id="memberEmailInput" placeholder="rohan.m@nexusenterprise.com" required />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label for="memberDeptSelect">Department *</label>
+                    <select id="memberDeptSelect">
+                      <option value="ops" selected>Operations &amp; Management</option>
+                      <option value="eng">Engineering &amp; Cloud</option>
+                      <option value="exec">Executive Leadership</option>
+                    </select>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label for="memberPhoneInput">Phone</label>
+                    <input type="tel" id="memberPhoneInput" placeholder="+91 98765 43210" />
+                  </div>
+                </div>
+
+                <div class="modal-actions">
+                  <button type="button" class="secondary-btn" data-close="addMemberModal">Cancel</button>
+                  <button type="submit" class="primary-btn">Save Member</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- 6. MODAL: MANAGER SUBMIT PERMISSION REQUEST -->
+          <div class="modal-backdrop hidden" id="permissionRequestModal">
+            <div class="modal-sheet">
+              <div class="modal-header">
+                <div>
+                  <h3 class="modal-title">Request Staff Quota / Approval</h3>
+                  <p class="modal-subtitle">Submit formal request to Executive Owner</p>
+                </div>
+                <button class="close-modal-btn" data-close="permissionRequestModal">&times;</button>
+              </div>
+              <form id="permissionRequestForm">
+                <div class="form-group">
+                  <label for="reqStaffName">Candidate / Position Name *</label>
+                  <input type="text" id="reqStaffName" placeholder="e.g. Cloud Security Specialist" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="reqActionType">Request Action *</label>
+                  <select id="reqActionType">
+                    <option value="CREATE_STAFF">Hire &amp; Provision New Staff</option>
+                    <option value="UPDATE_STAFF">Promote / Change Role</option>
+                    <option value="DELETE_STAFF">Revoke Credentials</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="reqReason">Operational Justification *</label>
+                  <textarea id="reqReason" rows="3" placeholder="Explain the workload need or throughput bottlenecks..." required></textarea>
+                </div>
+
+                <div class="modal-actions">
+                  <button type="button" class="secondary-btn" data-close="permissionRequestModal">Cancel</button>
+                  <button type="submit" class="primary-btn">Submit to Admin</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- 7. MODAL: REPORT BLOCKER -->
+          <div class="modal-backdrop hidden" id="blockerModal">
+            <div class="modal-sheet">
+              <div class="modal-header">
+                <div>
+                  <h3 class="modal-title">Report Task Blocker</h3>
+                  <p class="modal-subtitle">Alert your Manager and flag impediment</p>
+                </div>
+                <button class="close-modal-btn" data-close="blockerModal">&times;</button>
+              </div>
+              <form id="blockerForm">
+                <input type="hidden" id="blockerTaskId" />
+                <div class="form-group">
+                  <label for="blockerReasonInput">Impediment / Blocker Reason *</label>
+                  <textarea id="blockerReasonInput" rows="3" placeholder="e.g. Waiting on AWS credentials from DevOps..." required></textarea>
+                </div>
+                <div class="modal-actions">
+                  <button type="button" class="secondary-btn" data-close="blockerModal">Cancel</button>
+                  <button type="submit" class="danger-btn">Flag as Blocked</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- 8. MODAL: ANDROID STUDIO NATIVE CODE GUIDE -->
+          <div class="modal-backdrop hidden" id="androidGuideModal">
+            <div class="modal-sheet">
+              <div class="modal-header">
+                <div>
+                  <h3 class="modal-title">Native Android Jetpack Compose</h3>
+                  <p class="modal-subtitle">Synchronized code ready for Android Studio</p>
+                </div>
+                <button class="close-modal-btn" data-close="androidGuideModal">&times;</button>
+              </div>
+              <div class="guide-content">
+                <div class="guide-step">
+                  <span class="step-num">1</span>
+                  <div>
+                    <strong>SDK Path Configured</strong>
+                    <p><code>local.properties</code> is updated to <code>C:\Users\asus\AppData\Local\Android\Sdk</code>.</p>
+                  </div>
+                </div>
+                <div class="guide-step">
+                  <span class="step-num">2</span>
+                  <div>
+                    <strong>Open in Android Studio</strong>
+                    <p>Open this directory <code>d:\Ashish Chavan\Ashish\onedrive\Desktop\taskflow-ai (1)</code> directly in Android Studio.</p>
+                  </div>
+                </div>
+                <div class="guide-step">
+                  <span class="step-num">3</span>
+                  <div>
+                    <strong>All Compose Screens Complete</strong>
+                    <p>Includes <code>OwnerDashboard.kt</code>, <code>ManagerDashboard.kt</code>, <code>StaffDashboard.kt</code>, <code>BiometricPromptHelper.kt</code>, and <code>PinEntryScreen.kt</code>.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-actions">
+                <button type="button" class="primary-btn" data-close="androidGuideModal">Got It</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toast Notification Container -->
+          <div class="toast-container" id="toastContainer"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

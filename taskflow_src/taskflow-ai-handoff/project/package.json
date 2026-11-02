@@ -1,0 +1,13 @@
+{
+  "name": "taskflow-ai",
+  "version": "1.0.0",
+  "description": "TaskFlow AI - Enterprise B2B Task Management & Team Orchestration Mobile App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["taskflow", "ai", "mobile", "android", "enterprise"],
+  "author": "TaskFlow AI Team",
+  "license": "MIT"
+}

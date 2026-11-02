@@ -1,0 +1,76 @@
+// STAGE 2 (production): identity/role/company data is written ONLY by Cloud Functions (Admin SDK bypasses rules).
+// Clients can never write userDirectory, create organizations, change members, or decide approvals.
+// UNTESTED against the emulator in the authoring environment: run `npm run test:rules` in /rules-tests first.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function dirDoc(uid) { return /databases/$(database)/documents/userDirectory/$(uid); }
+    function hasDir() { return signedIn() && exists(dirDoc(request.auth.uid)); }
+    function me() { return get(dirDoc(request.auth.uid)).data; }
+    function active() { return hasDir() && me().status == 'active'; }
+    function inOrg(orgId) { return active() && me().orgId == orgId; }
+    function isAdmin(orgId) { return inOrg(orgId) && me().role == 'admin'; }
+    function isMgr(orgId) { return inOrg(orgId) && me().role == 'manager'; }
+
+    // Server-only collections
+    match /otpRequests/{d} { allow read, write: if false; }
+    match /rateLimits/{d} { allow read, write: if false; }
+    match /gstinIndex/{d} { allow read, write: if false; }
+    match /securityEvents/{d} { allow read, write: if false; }
+
+    match /userDirectory/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;   // own record only
+      allow write: if false;
+    }
+
+    match /organizations/{orgId} {
+      allow read: if inOrg(orgId);
+      allow create, delete: if false;
+      // Owner may edit profile fields but never identity/ownership fields
+      allow update: if isAdmin(orgId) && !request.resource.data.diff(resource.data).affectedKeys()
+                         .hasAny(['id', 'ownerUid', 'gstin', 'gstinVerifiedByGovernment']);
+
+      match /members/{mid} {
+        allow read: if inOrg(orgId) && (me().role in ['admin', 'manager'] || resource.data.userId == request.auth.uid);
+        // users may edit only their own non-privileged profile fields
+        allow update: if inOrg(orgId) && resource.data.userId == request.auth.uid
+                      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phone', 'photoPath', 'displayName']);
+        allow create, delete: if false;
+      }
+      match /tasks/{tid} {
+        allow read: if inOrg(orgId) && (me().role in ['admin', 'manager'] || resource.data.assignedToMemberId == me().memberId);
+        allow create: if (isAdmin(orgId) || isMgr(orgId)) && request.resource.data.organizationId == orgId;
+        allow update: if isAdmin(orgId) || isMgr(orgId) ||
+          (inOrg(orgId) && resource.data.assignedToMemberId == me().memberId &&
+           request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'progress', 'actualHours', 'blockerReason', 'checklist', 'subtasks']));
+        allow delete: if isAdmin(orgId);
+        match /comments/{cid} {
+          allow read: if inOrg(orgId);
+          allow create: if inOrg(orgId) && request.resource.data.authorMemberId == me().memberId;
+          allow update, delete: if false;
+        }
+      }
+      match /permission_requests/{rid} {
+        allow read: if isAdmin(orgId) || (isMgr(orgId) && resource.data.managerId == me().memberId);
+        allow create: if isMgr(orgId) && request.resource.data.status == 'pending' && request.resource.data.managerId == me().memberId;
+        allow update, delete: if false;            // decided via decideApproval()
+      }
+      match /recovery_requests/{rid} { allow read: if isAdmin(orgId); allow write: if false; }
+      match /notifications/{nid} {
+        allow read: if inOrg(orgId) && resource.data.toMemberId == me().memberId;
+        allow update: if inOrg(orgId) && resource.data.toMemberId == me().memberId
+                      && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']);
+        allow create, delete: if false;
+      }
+      match /activity/{aid} { allow read: if inOrg(orgId) && me().role in ['admin', 'manager']; allow write: if false; }
+      match /audit_logs/{lid} { allow read: if isAdmin(orgId); allow write: if false; }
+      match /meta/{d} { allow read, write: if false; }
+      match /branches/{b} { allow read: if inOrg(orgId); allow write: if isAdmin(orgId); }
+      match /warehouses/{w} { allow read: if inOrg(orgId); allow write: if isAdmin(orgId); }
+      match /settings/{s} { allow read: if inOrg(orgId); allow write: if isAdmin(orgId); }
+      match /departments/{x} { allow read: if inOrg(orgId); allow write: if isAdmin(orgId); }
+      match /{other=**} { allow read: if inOrg(orgId); allow write: if false; }
+    }
+  }
+}
