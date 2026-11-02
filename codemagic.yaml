@@ -1,6 +1,6 @@
 workflows:
   android-workflow:
-    name: TaskFlow Android Build (APK & AAB)
+    name: TaskFlow Android Build (Debug/Release APK & AAB)
     max_build_duration: 60
     instance_type: mac_mini_m1
     environment:
@@ -12,22 +12,23 @@ workflows:
         PACKAGE_NAME: "com.aistudio.taskflow"
       java: 17
     scripts:
-      - name: Set up local.properties and environment
+      - name: Set up local.properties and permissions
         script: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
           chmod +x gradlew || true
-      - name: Build Android APK
+      - name: Build Android Debug APK
         script: |
-          gradle assembleDebug
-      - name: Build Android Release APK & Bundle
+          ./gradlew assembleDebug
+      - name: Build Android Release APK & Play Store Bundle (AAB)
         script: |
-          gradle assembleRelease || gradle assembleDebug
+          ./gradlew assembleRelease
+          ./gradlew bundleRelease
     artifacts:
       - app/build/outputs/apk/**/*.apk
       - app/build/outputs/bundle/**/*.aab
 
-  ios-kmp-workflow:
-    name: TaskFlow iOS Build (IPA / Xcode Framework)
+  ios-workflow:
+    name: TaskFlow iOS Build (Signed IPA)
     max_build_duration: 60
     instance_type: mac_mini_m1
     environment:
@@ -36,18 +37,32 @@ workflows:
         bundle_identifier: com.aistudio.taskflow
       groups:
         - apple_credentials
+      vars:
+        XCODE_PROJECT: "ios/TaskFlowAI.xcodeproj"
+        XCODE_SCHEME: "TaskFlowAI"
       xcode: latest
-      cocoapods: default
     scripts:
-      - name: Set up environment and permissions
+      - name: Resolve Swift Package Dependencies
         script: |
-          chmod +x gradlew || true
-      - name: Build Shared Kotlin Multiplatform Framework for iOS
+          cd ios
+          xcodebuild -resolvePackageDependencies -project TaskFlowAI.xcodeproj
+      - name: Build Xcode Archive
         script: |
-          gradle :app:embedAndSignAppleFrameworkForXcode || gradle tasks
-      - name: Build iOS Xcode App
+          cd ios
+          xcodebuild archive \
+            -project TaskFlowAI.xcodeproj \
+            -scheme TaskFlowAI \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            -archivePath "$CM_BUILD_DIR/build/ios/TaskFlowAI.xcarchive" \
+            CODE_SIGN_STYLE="Automatic"
+      - name: Package and Export Signed IPA
         script: |
-          xcodebuild build -workspace iosApp/iosApp.xcworkspace -scheme iosApp -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO || echo "Configured for Codemagic iOS compilation"
+          cd ios
+          xcodebuild -exportArchive \
+            -archivePath "$CM_BUILD_DIR/build/ios/TaskFlowAI.xcarchive" \
+            -exportPath "$CM_BUILD_DIR/build/ios/ipa" \
+            -exportOptionsPlist TaskFlowAI/Resources/ExportOptions.plist
     artifacts:
       - build/ios/ipa/*.ipa
-      - app/build/outputs/**/*.framework
+      - build/ios/TaskFlowAI.xcarchive
