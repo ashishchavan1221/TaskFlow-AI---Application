@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA1000012C00000100000001 /* TaskFlowAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000022C00000100000001 /* TaskFlowAIApp.swift */; };
+		AA1000032C00000100000001 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000042C00000100000001 /* AppState.swift */; };
+		AA1000052C00000100000001 /* TaskFlowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000062C00000100000001 /* TaskFlowModels.swift */; };
+		AA1000072C00000100000001 /* TaskFlowTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000082C00000100000001 /* TaskFlowTheme.swift */; };
+		AA1000092C00000100000001 /* BackendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000A2C00000100000001 /* BackendApi.swift */; };
+		AA10000B2C00000100000001 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000C2C00000100000001 /* AuthenticationManager.swift */; };
+		AA10000D2C00000100000001 /* TaskFlowRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10000E2C00000100000001 /* TaskFlowRepository.swift */; };
+		AA10000F2C00000100000001 /* SecureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000102C00000100000001 /* SecureSessionManager.swift */; };
+		AA1000112C00000100000001 /* TaskFlowBrandLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000122C00000100000001 /* TaskFlowBrandLogo.swift */; };
+		AA1000132C00000100000001 /* AudioChimePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000142C00000100000001 /* AudioChimePlayer.swift */; };
+		AA1000152C00000100000001 /* D3PriorityDonutChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000162C00000100000001 /* D3PriorityDonutChart.swift */; };
+		AA1000172C00000100000001 /* StopwatchTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000182C00000100000001 /* StopwatchTimerView.swift */; };
+		AA1000192C00000100000001 /* NotificationCenterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10001A2C00000100000001 /* NotificationCenterModal.swift */; };
+		AA10001B2C00000100000001 /* DocumentModals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10001C2C00000100000001 /* DocumentModals.swift */; };
+		AA10001D2C00000100000001 /* MainAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10001E2C00000100000001 /* MainAppViewModel.swift */; };
+		AA10001F2C00000100000001 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000202C00000100000001 /* AuthView.swift */; };
+		AA1000212C00000100000001 /* PinEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000222C00000100000001 /* PinEntryView.swift */; };
+		AA1000232C00000100000001 /* OwnerDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000242C00000100000001 /* OwnerDashboardView.swift */; };
+		AA1000252C00000100000001 /* ManagerDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000262C00000100000001 /* ManagerDashboardView.swift */; };
+		AA1000272C00000100000001 /* StaffDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000282C00000100000001 /* StaffDashboardView.swift */; };
+		AA1000292C00000100000001 /* TaskCompletionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10002A2C00000100000001 /* TaskCompletionModal.swift */; };
+		AA10002B2C00000100000001 /* CreateTaskModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10002C2C00000100000001 /* CreateTaskModal.swift */; };
+		AA10002D2C00000100000001 /* TaskDetailModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10002E2C00000100000001 /* TaskDetailModal.swift */; };
+		AA10002F2C00000100000001 /* TaskPipelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000302C00000100000001 /* TaskPipelineView.swift */; };
+		AA1000312C00000100000001 /* CreateWorkgroupModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000322C00000100000001 /* CreateWorkgroupModal.swift */; };
+		AA1000332C00000100000001 /* GroupChatModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000342C00000100000001 /* GroupChatModal.swift */; };
+		AA1000352C00000100000001 /* TeamDirectoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000362C00000100000001 /* TeamDirectoryView.swift */; };
+		AA1000372C00000100000001 /* OperationalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000382C00000100000001 /* OperationalCalendarView.swift */; };
+		AA1000392C00000100000001 /* AiAssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10003A2C00000100000001 /* AiAssistantView.swift */; };
+		AA10003B2C00000100000001 /* ActivityAuditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10003C2C00000100000001 /* ActivityAuditView.swift */; };
+		AA10003D2C00000100000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10003E2C00000100000001 /* SettingsView.swift */; };
+		AA10003F2C00000100000001 /* MainDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1000402C00000100000001 /* MainDashboardView.swift */; };
+		AA1000412C00000100000001 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA1000422C00000100000001 /* GoogleService-Info.plist */; };
+		AA1000432C00000100000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1000442C00000100000001 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA1000002C00000100000001 /* TaskFlowAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskFlowAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1000022C00000100000001 /* TaskFlowAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFlowAIApp.swift; sourceTree = "<group>"; };
+		AA1000042C00000100000001 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		AA1000062C00000100000001 /* TaskFlowModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFlowModels.swift; sourceTree = "<group>"; };
+		AA1000082C00000100000001 /* TaskFlowTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFlowTheme.swift; sourceTree = "<group>"; };
+		AA10000A2C00000100000001 /* BackendApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendApi.swift; sourceTree = "<group>"; };
+		AA10000C2C00000100000001 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		AA10000E2C00000100000001 /* TaskFlowRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFlowRepository.swift; sourceTree = "<group>"; };
+		AA1000102C00000100000001 /* SecureSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureSessionManager.swift; sourceTree = "<group>"; };
+		AA1000122C00000100000001 /* TaskFlowBrandLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFlowBrandLogo.swift; sourceTree = "<group>"; };
+		AA1000142C00000100000001 /* AudioChimePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioChimePlayer.swift; sourceTree = "<group>"; };
+		AA1000162C00000100000001 /* D3PriorityDonutChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D3PriorityDonutChart.swift; sourceTree = "<group>"; };
+		AA1000182C00000100000001 /* StopwatchTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTimerView.swift; sourceTree = "<group>"; };
+		AA10001A2C00000100000001 /* NotificationCenterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterModal.swift; sourceTree = "<group>"; };
+		AA10001C2C00000100000001 /* DocumentModals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentModals.swift; sourceTree = "<group>"; };
+		AA10001E2C00000100000001 /* MainAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppViewModel.swift; sourceTree = "<group>"; };
+		AA1000202C00000100000001 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		AA1000222C00000100000001 /* PinEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinEntryView.swift; sourceTree = "<group>"; };
+		AA1000242C00000100000001 /* OwnerDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerDashboardView.swift; sourceTree = "<group>"; };
+		AA1000262C00000100000001 /* ManagerDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDashboardView.swift; sourceTree = "<group>"; };
+		AA1000282C00000100000001 /* StaffDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffDashboardView.swift; sourceTree = "<group>"; };
+		AA10002A2C00000100000001 /* TaskCompletionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCompletionModal.swift; sourceTree = "<group>"; };
+		AA10002C2C00000100000001 /* CreateTaskModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskModal.swift; sourceTree = "<group>"; };
+		AA10002E2C00000100000001 /* TaskDetailModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailModal.swift; sourceTree = "<group>"; };
+		AA1000302C00000100000001 /* TaskPipelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPipelineView.swift; sourceTree = "<group>"; };
+		AA1000322C00000100000001 /* CreateWorkgroupModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkgroupModal.swift; sourceTree = "<group>"; };
+		AA1000342C00000100000001 /* GroupChatModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatModal.swift; sourceTree = "<group>"; };
+		AA1000362C00000100000001 /* TeamDirectoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDirectoryView.swift; sourceTree = "<group>"; };
+		AA1000382C00000100000001 /* OperationalCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationalCalendarView.swift; sourceTree = "<group>"; };
+		AA10003A2C00000100000001 /* AiAssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiAssistantView.swift; sourceTree = "<group>"; };
+		AA10003C2C00000100000001 /* ActivityAuditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAuditView.swift; sourceTree = "<group>"; };
+		AA10003E2C00000100000001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AA1000402C00000100000001 /* MainDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDashboardView.swift; sourceTree = "<group>"; };
+		AA1000422C00000100000001 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA1000442C00000100000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA1000462C00000100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA1000472C00000100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA1000482C00000100000001 = {
+			isa = PBXGroup;
+			children = (
+				AA1000492C00000100000001 /* TaskFlowAI */,
+				AA10004A2C00000100000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA1000492C00000100000001 /* TaskFlowAI */ = {
+			isa = PBXGroup;
+			children = (
+				AA10004B2C00000100000001 /* App */,
+				AA10004C2C00000100000001 /* Models */,
+				AA10004D2C00000100000001 /* Services */,
+				AA10004E2C00000100000001 /* Components */,
+				AA10004F2C00000100000001 /* ViewModels */,
+				AA1000502C00000100000001 /* Screens */,
+				AA1000512C00000100000001 /* Resources */,
+			);
+			path = TaskFlowAI;
+			sourceTree = "<group>";
+		};
+		AA10004A2C00000100000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000002C00000100000001 /* TaskFlowAI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA10004B2C00000100000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000022C00000100000001 /* TaskFlowAIApp.swift */,
+				AA1000042C00000100000001 /* AppState.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AA10004C2C00000100000001 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000062C00000100000001 /* TaskFlowModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA10004D2C00000100000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AA10000A2C00000100000001 /* BackendApi.swift */,
+				AA10000C2C00000100000001 /* AuthenticationManager.swift */,
+				AA10000E2C00000100000001 /* TaskFlowRepository.swift */,
+				AA1000102C00000100000001 /* SecureSessionManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AA10004E2C00000100000001 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000082C00000100000001 /* TaskFlowTheme.swift */,
+				AA1000122C00000100000001 /* TaskFlowBrandLogo.swift */,
+				AA1000142C00000100000001 /* AudioChimePlayer.swift */,
+				AA1000162C00000100000001 /* D3PriorityDonutChart.swift */,
+				AA1000182C00000100000001 /* StopwatchTimerView.swift */,
+				AA10001A2C00000100000001 /* NotificationCenterModal.swift */,
+				AA10001C2C00000100000001 /* DocumentModals.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AA10004F2C00000100000001 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AA10001E2C00000100000001 /* MainAppViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AA1000502C00000100000001 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000202C00000100000001 /* AuthView.swift */,
+				AA1000222C00000100000001 /* PinEntryView.swift */,
+				AA1000242C00000100000001 /* OwnerDashboardView.swift */,
+				AA1000262C00000100000001 /* ManagerDashboardView.swift */,
+				AA1000282C00000100000001 /* StaffDashboardView.swift */,
+				AA10002A2C00000100000001 /* TaskCompletionModal.swift */,
+				AA10002C2C00000100000001 /* CreateTaskModal.swift */,
+				AA10002E2C00000100000001 /* TaskDetailModal.swift */,
+				AA1000302C00000100000001 /* TaskPipelineView.swift */,
+				AA1000322C00000100000001 /* CreateWorkgroupModal.swift */,
+				AA1000342C00000100000001 /* GroupChatModal.swift */,
+				AA1000362C00000100000001 /* TeamDirectoryView.swift */,
+				AA1000382C00000100000001 /* OperationalCalendarView.swift */,
+				AA10003A2C00000100000001 /* AiAssistantView.swift */,
+				AA10003C2C00000100000001 /* ActivityAuditView.swift */,
+				AA10003E2C00000100000001 /* SettingsView.swift */,
+				AA1000402C00000100000001 /* MainDashboardView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		AA1000512C00000100000001 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA1000422C00000100000001 /* GoogleService-Info.plist */,
+				AA1000442C00000100000001 /* Assets.xcassets */,
+				AA1000462C00000100000001 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA1000522C00000100000001 /* TaskFlowAI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA1000532C00000100000001 /* Build configuration list for PBXNativeTarget "TaskFlowAI" */;
+			buildPhases = (
+				AA1000542C00000100000001 /* Sources */,
+				AA1000472C00000100000001 /* Frameworks */,
+				AA1000552C00000100000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TaskFlowAI;
+			productName = TaskFlowAI;
+			productReference = AA1000002C00000100000001 /* TaskFlowAI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA1000562C00000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AA1000522C00000100000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = AA1000572C00000100000001 /* Build configuration list for PBXProject "TaskFlowAI" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA1000482C00000100000001;
+			productRefGroup = AA10004A2C00000100000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA1000522C00000100000001 /* TaskFlowAI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA1000552C00000100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA1000412C00000100000001 /* GoogleService-Info.plist in Resources */,
+				AA1000432C00000100000001 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA1000542C00000100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA1000012C00000100000001 /* TaskFlowAIApp.swift in Sources */,
+				AA1000032C00000100000001 /* AppState.swift in Sources */,
+				AA1000052C00000100000001 /* TaskFlowModels.swift in Sources */,
+				AA1000072C00000100000001 /* TaskFlowTheme.swift in Sources */,
+				AA1000092C00000100000001 /* BackendApi.swift in Sources */,
+				AA10000B2C00000100000001 /* AuthenticationManager.swift in Sources */,
+				AA10000D2C00000100000001 /* TaskFlowRepository.swift in Sources */,
+				AA10000F2C00000100000001 /* SecureSessionManager.swift in Sources */,
+				AA1000112C00000100000001 /* TaskFlowBrandLogo.swift in Sources */,
+				AA1000132C00000100000001 /* AudioChimePlayer.swift in Sources */,
+				AA1000152C00000100000001 /* D3PriorityDonutChart.swift in Sources */,
+				AA1000172C00000100000001 /* StopwatchTimerView.swift in Sources */,
+				AA1000192C00000100000001 /* NotificationCenterModal.swift in Sources */,
+				AA10001B2C00000100000001 /* DocumentModals.swift in Sources */,
+				AA10001D2C00000100000001 /* MainAppViewModel.swift in Sources */,
+				AA10001F2C00000100000001 /* AuthView.swift in Sources */,
+				AA1000212C00000100000001 /* PinEntryView.swift in Sources */,
+				AA1000232C00000100000001 /* OwnerDashboardView.swift in Sources */,
+				AA1000252C00000100000001 /* ManagerDashboardView.swift in Sources */,
+				AA1000272C00000100000001 /* StaffDashboardView.swift in Sources */,
+				AA1000292C00000100000001 /* TaskCompletionModal.swift in Sources */,
+				AA10002B2C00000100000001 /* CreateTaskModal.swift in Sources */,
+				AA10002D2C00000100000001 /* TaskDetailModal.swift in Sources */,
+				AA10002F2C00000100000001 /* TaskPipelineView.swift in Sources */,
+				AA1000312C00000100000001 /* CreateWorkgroupModal.swift in Sources */,
+				AA1000332C00000100000001 /* GroupChatModal.swift in Sources */,
+				AA1000352C00000100000001 /* TeamDirectoryView.swift in Sources */,
+				AA1000372C00000100000001 /* OperationalCalendarView.swift in Sources */,
+				AA1000392C00000100000001 /* AiAssistantView.swift in Sources */,
+				AA10003B2C00000100000001 /* ActivityAuditView.swift in Sources */,
+				AA10003D2C00000100000001 /* SettingsView.swift in Sources */,
+				AA10003F2C00000100000001 /* MainDashboardView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA1000582C00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDEFINED_VARIABLES = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA1000592C00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDEFINED_VARIABLES = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA10005A2C00000100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "TaskFlowAI/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aistudio.taskflow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA10005B2C00000100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "TaskFlowAI/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aistudio.taskflow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA1000572C00000100000001 /* Build configuration list for PBXProject "TaskFlowAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA1000582C00000100000001 /* Debug */,
+				AA1000592C00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA1000532C00000100000001 /* Build configuration list for PBXNativeTarget "TaskFlowAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA10005A2C00000100000001 /* Debug */,
+				AA10005B2C00000100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = AA1000562C00000100000001 /* Project object */;
+}
